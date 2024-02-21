@@ -8,7 +8,7 @@ btnsHaveSubmenu.forEach((btn, firstMenuIndex) => {
 
         subMenus.forEach((submenu, submenuIndex) => {
             if (submenuIndex == firstMenuIndex) {
-                submenu.classList.add('active');
+                submenu.classList.toggle('active');
             }
         })
 

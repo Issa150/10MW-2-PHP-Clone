@@ -58,11 +58,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->execute();
     $userData = $stmt->fetch();
 
-    if ($userData && password_verify($password, $userData["password"])) {
-        $_SESSION["user"] = $name;
-        header("Location: / ");
+    if ($userData){
+        if(password_verify($password, $userData["password"])) {
+            $_SESSION["user"] = $name;
+            header("Location: ". SITE_PATH);
+        }else{
+            echo "Password is incorrect!";
+        }
     } else {
-        echo "Invalid password";
+        echo "Name is not valid !";
     }
 } else {
     if (isset($_SESSION["user"])) {
@@ -86,7 +90,7 @@ include "inc/header.php";
         </div>
     </div>
     <div class="login_wrapper">
-        <img src="../assets/imgs/big-logo-removebg.png" alt="" />
+        <img src="assets/imgs/big-logo-removebg.png" alt="" />
 
         <form class="content" method="post">
             <div class="message_container">

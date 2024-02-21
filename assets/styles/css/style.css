@@ -119,6 +119,42 @@ img {
 .page_container .page .main_wrapp .main_board .outils_contents .contents .tool_card:not(:has(i)) {
   grid-template-columns: 1fr auto;
 }
+.page_container .page .main_wrapp i {
+  margin-right: 1em;
+}
+.page_container .page .main_wrapp footer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  background: #005259;
+  color: #fff;
+  padding-block: 1.3em;
+  position: relative;
+}
+.page_container .page .main_wrapp footer a {
+  padding: 0;
+  background: transparent;
+  color: #fff;
+}
+.page_container .page .main_wrapp footer .colomn {
+  -ms-flex-preferred-size: 35%;
+      flex-basis: 35%;
+}
+.page_container .page .main_wrapp footer .colomn ul {
+  padding-left: 2.5em;
+}
+.page_container .page .main_wrapp footer .colomn .social_medias {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  gap: 1em;
+}
+.page_container .page .main_wrapp footer .colomn > :last-child {
+  margin-top: 3em;
+}
 
 /* General */
 nav {
@@ -333,7 +369,7 @@ i {
 
 .left_menu,
 .left_menu.home {
-  border-radius: 5px;
+  border-top-right-radius: 5px;
   background: #005259;
   overflow: hidden;
   color: #fff;
@@ -475,48 +511,6 @@ i {
   display: block;
 }
 
-i {
-  margin-right: 1em;
-}
-
-footer {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
-  background: #003135;
-  color: #fff;
-  padding-block: 1.3em;
-  position: relative;
-}
-footer a {
-  padding: 0;
-  background: transparent;
-  color: #fff;
-}
-footer .colomn {
-  -ms-flex-preferred-size: 35%;
-      flex-basis: 35%;
-}
-footer .colomn ul {
-  padding-left: 2.5em;
-}
-footer .colomn .social_medias {
-  display: -webkit-inline-box;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  gap: 1em;
-}
-footer .colomn > :last-child {
-  margin-top: 3em;
-}
-
-.space {
-  height: 300px;
-}
-
 .wrap:has(h1) {
   position: absolute;
   top: 1.7em;
@@ -535,6 +529,10 @@ h1 {
   color: #005259;
   border-radius: 5px;
   text-align: center;
+}
+
+.coursePage .main_wrapp footer {
+  background: #003135 !important;
 }
 
 button {

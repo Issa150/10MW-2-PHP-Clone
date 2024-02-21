@@ -23,6 +23,7 @@ include "inc/nav.php";
     <?php include "inc/aside.php" ?>
 
     <div class="main_wrapp">
+
         <section class="main_board">
             <div class='hero_of_main'>
                 <div class="wrap">
@@ -35,13 +36,14 @@ include "inc/nav.php";
 
             <?php include "inc/tools.php" ?>
         </section>
+        
+        <!-- =============================== -->
         <?php include "inc/footer_page.php"; ?>
     </div>
 
+    <!-- --------Scripts-------- -->
+    <?php  include "inc/footer.php" ?>
 </main>
 
 
 
-
-<!-- ---------------- -->
-<?php include "inc/footer.php" ?>

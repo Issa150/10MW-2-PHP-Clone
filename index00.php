@@ -25,4 +25,3 @@ include "config/variables.php";
 // include "routes.php";
 // include "functions.php"
 ?>
-

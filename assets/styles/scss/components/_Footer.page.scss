@@ -6,7 +6,8 @@ i{
 footer{
     display: flex;
     justify-content: space-evenly;
-    background: darken($teal_prime, $sec_teal_num);
+    // background: darken($teal_prime, $sec_teal_num);
+    background:$teal_prime;
     color: #fff;
     padding-block: 1.3em;
     position: relative;

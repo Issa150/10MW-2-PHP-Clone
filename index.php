@@ -1,7 +1,7 @@
 <?php include "inc/header.php" ?>
 <?php include "inc/nav.php";
 include_once "config/variables.php";
-
+echo $_SESSION('user');
 ?>
 <!-- ---------------- -->
 

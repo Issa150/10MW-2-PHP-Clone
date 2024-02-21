@@ -1,6 +1,7 @@
 <?php
 include "config/connection.php";
 include "config/session_security.php";
+include "config/variables.php";
 //messages varaiable initiation
 $messageSuccessInsertion;
 $messageFailedInsertion;
@@ -38,7 +39,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (mysqli_stmt_affected_rows($stmt) > 0) {
             $messageSuccessInsertion = "The infos are successfully is saved ✅";
             echo $messageSuccessInsertion;
-            header("Location: /glossaires");
+            header("Location: " . SITE_PATH . "glossaires.php");
         } else {
             $messageFailedInsertion = "An error occurred while saving the data ❌";
             echo $messageFailedInsertion;
@@ -160,18 +161,18 @@ include "inc/nav.php";
                             <div></div>
                         </div>
 
-                        
-                            <?php
-                             if(isset($_SESSION['user'])){
-                                 echo "<button class='enregistrer'>Enregistrer</button>";
-                            }else{
-                                echo "<button onclick='preventSubmition(e)' class='enregistrer' title='To add a term you have to be loged in!'>Login</button>";
-                            }
-                             
-                             ?>
-                        
+
+                        <?php
+                        if (isset($_SESSION['user'])) {
+                            echo "<button class='enregistrer'>Enregistrer</button>";
+                        } else {
+                            echo "<button onclick='preventSubmition(e)' class='enregistrer' title='To add a term you have to be loged in!'>Login</button>";
+                        }
+
+                        ?>
+
                         <button>
-                            <a href="/glossaires">See All</a>
+                            <a href="<?=SITE_PATH?>glossaires.php">See All</a>
                         </button>
                         <button>Set data to server</button>
                     </form>
