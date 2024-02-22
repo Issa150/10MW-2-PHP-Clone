@@ -89,7 +89,7 @@ include_once "config/functions.php";
                     <a href='<?= SITE_PATH ?>pages/profile'><i class="fa-solid fa-user"></i>Profile</a>
                     <a href='<?= SITE_PATH ?>pages/profile2'><i class="fa-solid fa-envelope-open-text"></i>Messages Personnels</a>
                     <button><i class="fa-solid fa-screwdriver-wrench"></i>Préférences</button>
-                    <a href="<?= SITE_PATH ?>/login" onClick={logout} name="logout"><i class="fa-solid fa-right-from-bracket"></i> login/out</a>
+                    <a href="<?= SITE_PATH ?>/login.php" onClick={logout} name="logout"><i class="fa-solid fa-right-from-bracket"></i> login/out</a>
                 </ul>
             </div>
         </li>

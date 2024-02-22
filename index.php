@@ -1,7 +1,12 @@
-<?php include "inc/header.php" ?>
-<?php include "inc/nav.php";
+<?php 
+
+include "inc/header.php" ;
+include_once "config/session_security.php";
+include "inc/nav.php";
 include_once "config/variables.php";
-echo $_SESSION('user');
+// if ($_SESSION['user']){
+//     echo $_SESSION('user');
+// }
 ?>
 <!-- ---------------- -->
 

@@ -1,7 +1,4 @@
 <?php
-// define('SITE_PATH', dirname(__FILE__));
-// define('JUST_FILE', __FILE__);
-define('SITE_PATH', "/projects/10MW-PHP-PDO_path/");
-// define('SINGLE_DIR', dirname(__FILE__));
-// $SITE_PATH = dirname(dirname(__FILE__));
+define('SITE_PATH', "/projects/10MW-PHP-PDO_path/");  // Path in Home
+// define('SITE_PATH', "/PHP/Works/Issa-Projet-Personell/10MW-2-PHP-Clone/"); // Paht on Work!
 ?>

@@ -11,12 +11,12 @@
 */
 
 include "config/connection.php";
+include_once "config/session_security.php";
 // include "config/functions.php";
 $pageGlossaires = "pageGlossaires";
 
 include "inc/header.php";
 // include "config/session_security.php";
-session_start();
 include "inc/nav.php";
 
 ////////////////////////////////////
@@ -24,9 +24,9 @@ include "inc/nav.php";
 // Function for all type of categories 
 
 function getVocabularies(PDO $pdo, string $order,int $limit ): string{
-    $sql = "SELECT vocabularies.*, users3.image_profile
+    $sql = "SELECT vocabularies.*, users3.image_profile, users3.name
             FROM vocabularies
-            LEFT JOIN users3
+            INNER JOIN users3
             ON vocabularies.user_id = users3.id ORDER BY $order LIMIT $limit";
     $stmt = $pdo->prepare($sql);
     $stmt->execute();
@@ -47,10 +47,10 @@ function getVocabularies(PDO $pdo, string $order,int $limit ): string{
         $vocabList .= '
             <div class="vocab_card">
                 <div class="profile">
-                    <img src="' . (isset($row['image_profile']) ? ("data:image/jpeg;base64," . base64_encode($row['image_profile'])) : "../assets/imgs/profile-placeholder.jpg") . '" alt="" />
+                    <img src="' . (isset($row['image_profile']) ? ("data:image/jpeg;base64," . base64_encode($row['image_profile'])) : "assets/imgs/profile-placeholder.jpg") . '" alt="" />
 
                     <p>
-                        <strong>Author:</strong> ' . ucfirst($row["author"]) . '
+                        <strong>Author:</strong> ' . ucfirst($row["name"]) . '
                     </p>
                 </div>
                 <div class="content_container">
@@ -63,8 +63,8 @@ function getVocabularies(PDO $pdo, string $order,int $limit ): string{
                     </div>
                     <div class="actions">';
 
-                        if (isset($_SESSION["user"]) && $_SESSION["user"] == $row["author"]) {
-                            $vocabList .= '<button>Remove</button><br>';
+                        if (isset($_SESSION["user"]) && $_SESSION["user"] == $row["name"]) {
+                            $vocabList .= "<button name='remove'>Remove</button><br>";
                         }
 
                         $vocabList .= '
@@ -77,6 +77,18 @@ function getVocabularies(PDO $pdo, string $order,int $limit ): string{
     return $vocabList;
 }
 
+
+if (isset($_POST['remove'])) {
+    $id = $_POST['id'];
+    $sql = "DELETE FROM vocabularies WHERE id = :id";
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+    $stmt->execute();
+    header('Location: glossaires.php');
+} elseif (isset($_POST['edit'])) {
+    $id = $_POST['id'];
+    header('Location: edit.php?id=' . $id);
+}
 ?>
 
 <!-- ---------------- -->
@@ -222,7 +234,7 @@ function getVocabularies(PDO $pdo, string $order,int $limit ): string{
 
                             <div class="archive_display">
                                   
-                                <?= getVocabularies($pdo, "concept", 2);?>
+                                <?= getVocabularies($pdo, "concept", 4);?>
 
                             </div>
                         </div>
@@ -245,7 +257,7 @@ function getVocabularies(PDO $pdo, string $order,int $limit ): string{
                                 <!-- <h3>Consulter par Dates</h3> -->
                             </div>
                             <div class="archive_display">
-                                <?= getVocabularies($pdo, "created_at DESC", 3)?>
+                                <?= getVocabularies($pdo, "created_at DESC", 4)?>
                             </div>
                         </div>
 
