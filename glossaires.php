@@ -10,14 +10,13 @@
     );
 */
 
-include "config/connection.php";
+include_once "config/connection.php";
 include_once "config/session_security.php";
 // include "config/functions.php";
 $pageGlossaires = "pageGlossaires";
 
-include "inc/header.php";
-// include "config/session_security.php";
-include "inc/nav.php";
+include_once "inc/header.php";
+include_once "inc/nav.php";
 
 ////////////////////////////////////
 
@@ -43,40 +42,60 @@ function getVocabularies(PDO $pdo, string $order,int $limit ): string{
                 $tagList = "...";
             }
         }
+        $datetime = DateTime::createFromFormat('Y-m-d H:i:s', $row['created_at']);
+        $date = $datetime->format('d/m/Y');
+        $time = $datetime->format('H:i');
 
-        $vocabList .= '
-            <div class="vocab_card">
-                <div class="profile">
-                    <img src="' . (isset($row['image_profile']) ? ("data:image/jpeg;base64," . base64_encode($row['image_profile'])) : "assets/imgs/profile-placeholder.jpg") . '" alt="" />
 
-                    <p>
-                        <strong>Author:</strong> ' . ucfirst($row["name"]) . '
-                    </p>
+        $vocabList .= "
+        <div class='vocab_card'>
+            <div class='vocab_head'>
+                <h4>". $row['concept'] . "</h4>
+            </div>
+      
+      
+            <div class='vocab_body'>
+      
+                <p class='term_description'>" . $row['description'] ." </p>
+                <div class='tag_wrap'>
+                <span>Termes associés</span><small>" . $tagList . "</small>
                 </div>
-                <div class="content_container">
-                    <div class="content">
+                <div class='meta_data'>
+                    <img class='profile' src=" . (isset($row['image_profile']) ? ("data:image/jpeg;base64," . base64_encode($row['image_profile'])) : "assets/imgs/profile-placeholder.jpg") . " alt='' />
+                    <div class='middle_wrapper'>
+                        <p><span class='meta_title'>Author:</span>"  . ucfirst($row['name']) . "</p>
                         <p>
-                            <b>' . $row["concept"] . '</b>
+                            ". $date ."
                         </p>
-                        <p>' . $row["description"] . '</p>
-                        <small>' . $tagList . '</small>
+
                     </div>
-                    <div class="actions">';
-
-                        if (isset($_SESSION["user"]) && $_SESSION["user"] == $row["name"]) {
-                            $vocabList .= "<button name='remove'>Remove</button><br>";
+                    <div class='actions'>
+                        <div class='icons_wrapper'>
+                        <a><i class='fa-solid fa-link'></i></a>
+                        ";
+                          if (isset($_SESSION["user"]) && $_SESSION["user"] == $row["name"]) {
+                            $vocabList .= "
+                            <a href='?termId=". $row['id']."'><i class='fa-solid fa-gear'></i></a>
+                            <a href='?termId=" .$row['id'] ."'><i class='fa-solid fa-trash-can'></i></a>";
                         }
-
-                        $vocabList .= '
+                        $vocabList.="</div>
+                        <p>
+                            ". $time ." // ".$row['id'] ."
+                        </p>
                     </div>
                 </div>
             </div>
-        ';
+        </div>" ;
+        
     }
 
     return $vocabList;
 }
+///////////////////////////////////////////
 
+
+
+  
 
 if (isset($_POST['remove'])) {
     $id = $_POST['id'];
