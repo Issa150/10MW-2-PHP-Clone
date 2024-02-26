@@ -80,7 +80,7 @@ function getVocabularies(PDO $pdo, string $order,int $limit ): string{
                         }
                         $vocabList.="</div>
                         <p>
-                            ". $time ." // ".$row['id'] ."
+                            ". $time ."
                         </p>
                     </div>
                 </div>
@@ -117,7 +117,7 @@ if (isset($_POST['remove'])) {
 <main class="glossaire page">
     <div class="left_menu home active">
         <div class="wrap_btn">
-            <a href="/" class="red">
+            <a href="'<?=SITE_PATH?>#" class="red">
                 <i class="fa-solid fa-briefcase fa_icone"></i>
                 Outils, Ressources
             </a>

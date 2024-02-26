@@ -14,50 +14,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
 
-    // empty check
-    /*
-    if (!empty(trim($concept)) && !empty(trim($description))) {
-        if (isset($_SESSION['user'])) {
-            $author = $_SESSION['user'];
 
-            $idUserQuery = "SELECT id FROM users3 WHERE name = '$author'";
-            $resIdUser = mysqli_query($con, $idUserQuery);
-
-            if ($resIdUser && mysqli_num_rows($resIdUser) > 0) {
-                $userId = mysqli_fetch_assoc($resIdUser)['id'];
-                
-            } else {
-                $userId = null;
-            }
-        } else echo "<script></script";
-        ///////////////
-        $query = "INSERT INTO vocabularies (author,user_id, concept, description, tags) 
-                                    VALUES (?,?, ?, ?, ?)";
-        $stmt = mysqli_prepare($con, $query);
-        mysqli_stmt_bind_param($stmt, "sisss", $author, $userId, $concept, $description, $tags);
-        mysqli_stmt_execute($stmt);
-
-        if (mysqli_stmt_affected_rows($stmt) > 0) {
-            $messageSuccessInsertion = "The infos are successfully is saved ✅";
-            echo $messageSuccessInsertion;
-            header("Location: " . SITE_PATH . "glossaires.php");
-        } else {
-            $messageFailedInsertion = "An error occurred while saving the data ❌";
-            echo $messageFailedInsertion;
-        }
-    } else {
-        echo "The inputs could not be empty 🤖";
-    }
-    */
 
     if (!empty(trim($concept)) && !empty(trim($description))) {
         if (isset($_SESSION['user'])) {
+
+            // access the id of the person to put on vocab, the id will be stored on "$userId"
             $author = $_SESSION['user'];
-    
             $idUserQuery = "SELECT id FROM users3 WHERE name = ?";
             $stmt = $pdo->prepare($idUserQuery);
             $stmt->execute([$author]);
-    
+
             if ($stmt->rowCount() > 0) {
                 $userId = $stmt->fetch()['id'];
             } else {
@@ -66,12 +33,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         } else {
             $author = "";
         }
-    
-        $query = "INSERT INTO vocabularies (author, user_id, concept, description, tags) 
-                                    VALUES (?, ?, ?, ?, ?)";
+
+        $query = "INSERT INTO vocabularies (user_id, concept, description, tags) 
+                                    VALUES (?, ?, ?, ?)";
         $stmt = $pdo->prepare($query);
-        $stmt->execute([$author, $userId, $concept, $description, $tags]);
-    
+        $stmt->execute([$userId, $concept, $description, $tags]);
+
         if ($stmt->rowCount() > 0) {
             $messageSuccessInsertion = "The infos are successfully saved ✅";
             echo $messageSuccessInsertion;
@@ -89,15 +56,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 include "inc/header.php";
 include "inc/nav.php";
 ?>
-<?php  ?>
+
 <!-- ---------------- -->
 
 
 
 <main class="glossaire page">
-    <div class="left_menu  active">
+    <div class="left_menu home active">
         <div class="wrap_content">
-            <a href="/" class="red">
+            <a href="'<?=SITE_PATH?>#" class="red">
                 <i class="fa-solid fa-briefcase fa_icone"></i>
                 Outils, Ressources
             </a>
@@ -202,7 +169,7 @@ include "inc/nav.php";
                         if (isset($_SESSION['user'])) {
                             echo "<button class='enregistrer'>Enregistrer</button>";
                         } else {
-                            echo "<button onclick='preventSubmition(e)' class='enregistrer' title='To add a term you have to be loged in!'>Login <sup>❗</sup></button>";
+                            echo "<button onclick='preventSubmition(e)' class='enregistrer' title='To add a term you have to be loged in!'><a href='". SITE_PATH ."login.php'>Login <sup>❗</sup></a></button>";
                         }
 
                         ?>

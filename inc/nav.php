@@ -86,7 +86,7 @@ include_once "config/functions.php";
                 <img class='s_Icon' src="assets/icons/sort-down-solid.svg" alt="" />
                 <ul class="subMenu">
                     <a href="<?= SITE_PATH ?>"><i class="fa-solid fa-house"></i>Tableau du bord</a>
-                    <a href='<?= SITE_PATH ?>pages/profile'><i class="fa-solid fa-user"></i>Profile</a>
+                    <a href='<?= SITE_PATH ?>profile.php'><i class="fa-solid fa-user"></i>Profile</a>
                     <a href='<?= SITE_PATH ?>pages/profile2'><i class="fa-solid fa-envelope-open-text"></i>Messages Personnels</a>
                     <button><i class="fa-solid fa-screwdriver-wrench"></i>Préférences</button>
                     <a href="<?= SITE_PATH ?>/login.php" onClick={logout} name="logout"><i class="fa-solid fa-right-from-bracket"></i> login/out</a>
