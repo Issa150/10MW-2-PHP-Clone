@@ -11,7 +11,7 @@ include "config/session_security.php";
 
 
 //////////////////////////////
-$levelDir = 'pages';
+$title = "Cours";
 include "inc/header.php"; 
 include "inc/nav.php";
 ?>
@@ -19,7 +19,7 @@ include "inc/nav.php";
 <!-- ---------------- -->
 
 
-<main class="page coursePage">
+<main class="page coursPage">
     <?php include "inc/aside.php" ?>
 
     <div class="main_wrapp">

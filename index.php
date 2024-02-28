@@ -1,5 +1,5 @@
 <?php 
-
+$title = "Dashboard";
 include "inc/header.php" ;
 include_once "config/session_security.php";
 include "inc/nav.php";

@@ -14,7 +14,7 @@ include_once "config/connection.php";
 include_once "config/session_security.php";
 // include "config/functions.php";
 $pageGlossaires = "pageGlossaires";
-
+$title = "Glossaires";
 include_once "inc/header.php";
 include_once "inc/nav.php";
 
@@ -56,7 +56,8 @@ function getVocabularies(PDO $pdo, string $order,int $limit ): string{
       
             <div class='vocab_body'>
       
-                <p class='term_description'>" . $row['description'] ." </p>
+                <div class='editable' id='mycontent' >" . htmlspecialchars_decode($row['description']) . "</div>
+                
                 <div class='tag_wrap'>
                 <span>Termes associés</span><small>" . $tagList . "</small>
                 </div>
@@ -114,7 +115,7 @@ if (isset($_POST['remove'])) {
 
 
 
-<main class="glossaire page">
+<main class="page glossaire">
     <div class="left_menu home active">
         <div class="wrap_btn">
             <a href="'<?=SITE_PATH?>#" class="red">
