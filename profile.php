@@ -1,46 +1,80 @@
 <?php
-// include "config/connection.php";
+include "config/connection.php";
 include "config/session_security.php";
 include "config/variables.php";
+include "config/functions.php";
+
+
+
+
+
+
+
 
 
 $title = "Profile";
 include "inc/header.php";
 include "inc/nav.php";
 ?>
-<main class="page Dashboard main_wrapper">
+<main class="page Profile ">
     
     <div class="main_wrapp">
         <section class="main_board">
+
+
+
+
             <div class='hero_of_main'>
+
+            
                 <div class="wrap">
+                    <img class='profile' src="
+                    <?= (isset($imageProfile))
+                        ? ("data:image/jpeg;base64," . base64_encode($imageProfile))
+                        : SITE_PATH . "assets/imgs/imgPlaceholder01.png";
+                    ?>" alt="" />
+
                     <h1>10MW: Tableau de bord</h1>
                 </div>
+
                 <div class="wrap">
-                    <button>Modifier cette page</button>
+                    <button>Réinitialiser la page</button>
                 </div>
+
+
             </div>
+
+
+
+
+
+
+
+
+
+
             <div class="profile_infos">
                 <div class="card_info">
                     <h3>Informations détaillées</h3>
                     <a href="#" class='btn'>Modifier le profil</a>
                     <dl>
                         <dt>Adresse de courriel</dt>
-                        <dd>issa.jafari@colombbus.org</dd>
+                        <dd><?= $email?></dd>
                     </dl>
 
                     <dl>
                         <dt>Pays</dt>
-                        <dd>France</dd>
+                        <dd><?= $country?></dd>
                     </dl>
 
                     <dl>
                         <dt>Ville</dt>
-                        <dd>Paris</dd>
+                        <dd><?= $city?></dd>
                     </dl>
                     <dl>
                         <dt>Centres d'intérêt</dt>
-                        <dd>ping-pong</dd>
+                        <!-- The php should rebder an array !!!!!!! -->
+                        <dd><?= $interests?></dd>
                     </dl>
                 </div>
 
@@ -103,10 +137,12 @@ include "inc/nav.php";
                     <button>Afficher le code QR</button>
                 </div>
             </div>
-        </section>
-        <?php include "inc/footer_page.php"; ?>
-    </div>
 
+
+        </section>
+    </div>
+    
+    <?php include "inc/footer_page.php"; ?>
 </main>
 
 

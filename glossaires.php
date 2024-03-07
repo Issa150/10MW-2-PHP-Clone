@@ -74,7 +74,7 @@ function getVocabularies(PDO $pdo, string $order,int $limit ): string{
                         <div class='icons_wrapper'>
                         <a><i class='fa-solid fa-link'></i></a>
                         ";
-                          if (isset($_SESSION["user"]) && $_SESSION["user"] == $row["name"]) {
+                          if (isset($_SESSION["user10MW"]) && $_SESSION["user10MW"] == $row["name"]) {
                             $vocabList .= "
                             <a href='?termId=". $row['id']."'><i class='fa-solid fa-gear'></i></a>
                             <a href='?termId=" .$row['id'] ."'><i class='fa-solid fa-trash-can'></i></a>";

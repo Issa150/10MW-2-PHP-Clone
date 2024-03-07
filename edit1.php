@@ -17,10 +17,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
     if (!empty(trim($concept)) && !empty(trim($description))) {
-        if (isset($_SESSION['user'])) {
+        if (isset($_SESSION['user10MW'])) {
 
             // access the id of the person to put on vocab, the id will be stored on "$userId"
-            $author = $_SESSION['user'];
+            $author = $_SESSION['user10MW'];
             $idUserQuery = "SELECT id FROM users3 WHERE name = ?";
             $stmt = $pdo->prepare($idUserQuery);
             $stmt->execute([$author]);

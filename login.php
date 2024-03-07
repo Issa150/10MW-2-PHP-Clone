@@ -26,7 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($userData){
         if(password_verify($password, $userData["password"])) {
-            $_SESSION["user"] = $name;
+            $_SESSION["user10MW"] = $name;
             header("Location: ". SITE_PATH);
         }else{
             echo "Password is incorrect!";
@@ -35,8 +35,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "Name is not valid !";
     }
 } else {
-    if (isset($_SESSION["user"])) {
-        unset($_SESSION["user"]);
+    if (isset($_SESSION["user10MW"])) {
+        unset($_SESSION["user10MW"]);
         echo "Considered as deconection!";
     } else {
 

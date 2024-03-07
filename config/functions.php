@@ -30,8 +30,8 @@
 
 ////////////////////////////////////////:::::::::
 
-if (isset($_SESSION["user"])) {
-  $savedName = $_SESSION["user"];
+if (isset($_SESSION["user10MW"])) {
+  $savedName = $_SESSION["user10MW"];
   $stmt = $pdo->prepare("SELECT * FROM users3 WHERE name = :name LIMIT 1");
   $stmt->bindParam(':name', $savedName);
   $stmt->execute();
@@ -42,6 +42,7 @@ if (isset($_SESSION["user"])) {
 
       $country = $row["country"];
       $city = $row["city"];
+      $interests = $row["inretests"];
       $email = $row["email"];
       $imageProfile = $row["image_profile"];
   }
@@ -50,4 +51,5 @@ if (isset($_SESSION["user"])) {
   $country = "...";
   $city = "...";
   $email = "...";
+  $interests = "...";
 }

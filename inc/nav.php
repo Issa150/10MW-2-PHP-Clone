@@ -51,7 +51,7 @@ include_once "config/functions.php";
 <!-- Start Midle Warning  Box -->
 
 <?php 
-    if (!isset($_SESSION["user"])){
+    if (!isset($_SESSION["user10MW"])){
         echo "<span class='loginWarning' style='background-color: hsl(0, 100%, 50%,.5); outline: 2px solid red; display:flex; align-items:center; padding-inline:1em; margin-block:10px; border-radius:5px;'>The user is not specified in session</span>";
     }
 ?>
@@ -70,8 +70,8 @@ include_once "config/functions.php";
             <div class='menuItem1'>
                 <p>
                     <?php
-                    if (isset($_SESSION["user"])) {
-                        echo ucfirst($_SESSION["user"]);
+                    if (isset($_SESSION["user10MW"])) {
+                        echo ucfirst($_SESSION["user10MW"]);
                     } else {
                         echo "<a href='" . SITE_PATH . "login.php'>Login</a>";
                     }
