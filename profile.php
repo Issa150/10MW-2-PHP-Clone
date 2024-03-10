@@ -1,4 +1,5 @@
 <?php
+$direPos = "page";
 include "config/connection.php";
 include "config/session_security.php";
 include "config/variables.php";
@@ -7,7 +8,15 @@ include "config/functions.php";
 
 
 
-
+$allInterests = explode(',', $interests);
+$tagList = '';
+foreach ($allInterests as $interest) {
+    if (!empty($interest)) {
+        $tagList .= '<span>' . trim($interest) . '</span>';
+    } else {
+        $tagList = "...";
+    }
+}
 
 
 
@@ -17,7 +26,7 @@ include "inc/header.php";
 include "inc/nav.php";
 ?>
 <main class="page Profile ">
-    
+
     <div class="main_wrapp">
         <section class="main_board">
 
@@ -26,7 +35,7 @@ include "inc/nav.php";
 
             <div class='hero_of_main'>
 
-            
+
                 <div class="wrap">
                     <img class='profile' src="
                     <?= (isset($imageProfile))
@@ -56,25 +65,25 @@ include "inc/nav.php";
             <div class="profile_infos">
                 <div class="card_info">
                     <h3>Informations détaillées</h3>
-                    <a href="#" class='btn'>Modifier le profil</a>
+                    <a href="<?=SITE_PATH?>pages/edit_profile.php" class='btn'>Modifier le profil</a>
                     <dl>
                         <dt>Adresse de courriel</dt>
-                        <dd><?= $email?></dd>
+                        <dd><?= $email ?></dd>
                     </dl>
 
                     <dl>
                         <dt>Pays</dt>
-                        <dd><?= $country?></dd>
+                        <dd><?= $country ?></dd>
                     </dl>
 
                     <dl>
                         <dt>Ville</dt>
-                        <dd><?= $city?></dd>
+                        <dd><?= $city ?></dd>
                     </dl>
                     <dl>
                         <dt>Centres d'intérêt</dt>
                         <!-- The php should rebder an array !!!!!!! -->
-                        <dd><?= $interests?></dd>
+                        <dd><?= $tagList ?></dd>
                     </dl>
                 </div>
 
@@ -141,7 +150,7 @@ include "inc/nav.php";
 
         </section>
     </div>
-    
+
     <?php include "inc/footer_page.php"; ?>
 </main>
 

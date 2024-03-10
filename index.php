@@ -1,9 +1,9 @@
 <?php 
 $title = "Dashboard";
-include "inc/header.php" ;
-include_once "config/session_security.php";
-include "inc/nav.php";
 include_once "config/variables.php";
+include_once "config/session_security.php";
+include "inc/header.php" ;
+include "inc/nav.php";
 // if ($_SESSION['user']){
 //     echo $_SESSION('user');
 // }

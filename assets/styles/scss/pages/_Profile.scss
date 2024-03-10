@@ -1,10 +1,10 @@
-.page.Profile {
+.page.Profile , .page.edit_profile {
 
   grid-template-columns: auto;
 
   .main_wrapp {
 
-    width: max(600px, 800px);
+    width: max(600px, 1100px);
     margin-inline: auto;
     overflow: visible;
 
@@ -44,7 +44,8 @@
         padding: 1em;
         border: 1px solid lightgrey;
         margin-bottom: 1em;
-        // height: max-content;
+        width: 100%;
+        display: inline-block;
 
         h3 {
           font-size: 20px;
@@ -72,6 +73,17 @@
 
           dd {
             overflow-wrap: anywhere;
+          
+                span{
+                  font-style: italic;
+                  background: $teal_light;
+                  width: max-content;
+                  padding: 0px 5px 2px 5px;
+                  color: #000;
+                  border-radius: 50px;
+                  margin-inline: 3px;
+              }
+            
           }
         }
       }

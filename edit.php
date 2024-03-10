@@ -6,7 +6,7 @@
     $messageSuccessInsertion;
     $messageFailedInsertion;
 
-    
+
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $concept = filter_input(INPUT_POST, "concept", FILTER_SANITIZE_SPECIAL_CHARS);
         $description = filter_input(INPUT_POST, "description", FILTER_SANITIZE_SPECIAL_CHARS);
@@ -51,24 +51,24 @@
             echo "The inputs could not be empty 🤖";
         }
     }
-    
+
     $title = "Edit";
     include "inc/header.php";
     include "inc/nav.php";
     ?>
 
     <!-- ---------------- -->
- 
+
     <main class="page glossaire">
         <div class="left_menu home active">
             <div class="wrap_content">
-                <a href="'<?=SITE_PATH?>#" class="red">
+                <a href="'<?= SITE_PATH ?>#" class="red">
                     <i class="fa-solid fa-briefcase fa_icone"></i>
                     Outils, Ressources
                 </a>
             </div>
         </div>
-        
+
         <div class="main_wrapp">
             <section class="main_board">
                 <div class="hero_of_main">
@@ -76,27 +76,27 @@
                         <h1>Développeur Web & Web Mobile</h1>
                     </div>
                     <div class="wrap">
-                    <!-- {/* <img src="../../src/assets/icons/settings.png" alt="" /> */} -->
-                    <i class="fa-solid fa-gear"></i>
+                        <!-- {/* <img src="../../src/assets/icons/settings.png" alt="" /> */} -->
+                        <i class="fa-solid fa-gear"></i>
+                    </div>
                 </div>
-            </div>
-            
-            <div class="glossaires_wrapper">
-                <div class="title">
-                    <h1>
-                        Glossaire technique - 23 - Terrage<span>1/1</span>
-                    </h1>
-                </div>
-                
-                <div class="tool_card">
-                <!-- {/* <i class="fa-solid fa-file-pdf"></i> */} -->
-                
-                <div class="wrapper">
-                <!-- {/* <a>Règlement intérieur</a> */} -->
-                <h2>Projet 1 - Glossaire technique, promo 23 - Terrage</h2>
-                <p>
-                    Le glossaire technique est constiuté au fur et à mesure de
-                    votre parcours de formation. Vous en êtes les contributeurs.
+
+                <div class="glossaires_wrapper">
+                    <div class="title">
+                        <h1>
+                            Glossaire technique - 23 - Terrage<span>1/1</span>
+                        </h1>
+                    </div>
+
+                    <div class="tool_card">
+                        <!-- {/* <i class="fa-solid fa-file-pdf"></i> */} -->
+
+                        <div class="wrapper">
+                            <!-- {/* <a>Règlement intérieur</a> */} -->
+                            <h2>Projet 1 - Glossaire technique, promo 23 - Terrage</h2>
+                            <p>
+                                Le glossaire technique est constiuté au fur et à mesure de
+                                votre parcours de formation. Vous en êtes les contributeurs.
                             </p>
                             <ul>
                                 <li>
@@ -121,14 +121,16 @@
                         </div>
                         <!-- {/* <input type="checkbox" name="" id="" /> */} -->
                     </div>
-                    
+
                     <div class="vocabulary_container">
                         <form id="all_tab_form" method="post">
                             <div class="accordion_container">
+
                                 <div class="accord_head" onClick={accordionHandel}>
                                     <i class="fa-solid fa-caret-right fa anim_accord"></i>
                                     Généraux
                                 </div>
+
                                 <div class="accord_body open_accord">
                                     <div class="child_wrap">
                                         <div>
@@ -137,16 +139,16 @@
                                         </div>
                                         <input name="concept" id="concept" type="text" placeholder="Concept..." />
                                     </div>
-                                    
+
                                     <div class="child_wrap">
                                         <div>
                                             <label for="textarea">Définition</label>
                                             <i class="fa-solid fa-circle-exclamation"></i>
                                         </div>
                                         <textarea name="description" placeholder="Description..." id="mytextarea" cols="30" rows="10"></textarea>
-                                        
+
                                     </div>
-                                    
+
                                     <div class="child_wrap">
                                         <div>
                                             <label for="tags">Termes associés</label>
@@ -155,7 +157,7 @@
                                         <input name="tags" id="tags" type="text" placeholder="Key words..." />
                                     </div>
                                 </div>
-                                
+
                                 <div class="accord_head">Liaison automatique</div>
                                 <div></div>
 
@@ -164,11 +166,11 @@
                             </div>
 
 
-                            <?php 
+                            <?php
                             if (isset($_SESSION['user'])) {
                                 echo "<button class='enregistrer'>Enregistrer</button>";
                             } else {
-                                echo "<button onclick='preventSubmition(e)' class='enregistrer' title='To add a term you have to be loged in!'><a href='". SITE_PATH ."login.php'>Login <sup>❗</sup></a></button>";
+                                echo "<button onclick='preventSubmition(e)' class='enregistrer' title='To add a term you have to be loged in!'><a href='" . SITE_PATH . "login.php'>Login <sup>❗</sup></a></button>";
                             }
 
                             ?>

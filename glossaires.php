@@ -12,6 +12,7 @@
 
 include_once "config/connection.php";
 include_once "config/session_security.php";
+include_once "config/variables.php";
 // include "config/functions.php";
 $pageGlossaires = "pageGlossaires";
 $title = "Glossaires";

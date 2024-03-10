@@ -1,5 +1,7 @@
 <?php 
 include "config/session_security.php";
+include "config/variables.php";
+
 // include 'config/db_conn.php';
 // $_SESSION["user"];
 
